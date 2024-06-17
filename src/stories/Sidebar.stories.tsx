@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from "@storybook/react";
 import Sidebar from "../components/Sidebar";
+import React from "react";
 
 export default {
   title: "Navigation/Sidebar",

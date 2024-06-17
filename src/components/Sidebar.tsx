@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { ItemsSidebar } from "../@core/interfaces/Sidebar.interface";
+import React from "react";
 
 interface Props {
   username: string;
