@@ -1,8 +1,9 @@
 src/
+.next/
 node_modules/
 .storybook/
 storybook-static/
-rollup.config.js
 tsconfig.json
 *.log
-.rollup.cache
+chromatic.config.json
+webpack.config.cjs
