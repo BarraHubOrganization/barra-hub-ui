@@ -1,4 +1,4 @@
-import { ItemsSidebar } from "../@core/interfaces/Sidebar.interface";
+import { ItemsSidebar } from "../@core/interfaces/Sidebar";
 import React from "react";
 interface Props {
     username: string;

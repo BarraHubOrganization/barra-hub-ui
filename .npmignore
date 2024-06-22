@@ -7,3 +7,5 @@ tsconfig.json
 *.log
 chromatic.config.json
 webpack.config.cjs
+.babelrc
+.eslintrc.json

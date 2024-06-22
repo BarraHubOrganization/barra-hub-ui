@@ -9,7 +9,7 @@ import {
   faBars
 } from "@fortawesome/free-solid-svg-icons";
 
-import { ItemsSidebar } from "../@core/interfaces/Sidebar.interface";
+import { ItemsSidebar } from "../@core/interfaces/Sidebar";
 import React from "react";
 
 interface Props {
@@ -28,7 +28,7 @@ export default function SideBar(props: Props) {
   return (
     <article className="h-screen">
       <button
-        className={`sm:hidden flex items-center justify-center top-5 w-6 h-6 p-1 mt-4 left-1/2 fixed z-50`}
+        className={"sm:hidden flex items-center justify-center top-5 w-6 h-6 p-1 mt-4 left-1/2 fixed z-50"}
         onClick={toggleSidebar}
         title={isSidebarOpen ? "Fechar barra lateral" : "Abrir barra lateral"}
       >
@@ -38,7 +38,7 @@ export default function SideBar(props: Props) {
         className={`fixed flex flex-col items-center gap-4 bg-slate-50 min-w-16 min-h-screen shadow-sm transition-all duration-500 shadow-white p-3 ${isSidebarOpen ? "sm:w-44 w-full" : "sm:w-16 sm:flex hidden"}`}
       >
         <button
-          className={`sm:flex hidden items-center justify-center w-6 h-6 p-1 mt-4`}
+          className={"sm:flex hidden items-center justify-center w-6 h-6 p-1 mt-4"}
           onClick={toggleSidebar}
           title={isSidebarOpen ? "Fechar barra lateral" : "Abrir barra lateral"}
         >

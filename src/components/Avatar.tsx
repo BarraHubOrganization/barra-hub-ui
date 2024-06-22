@@ -3,7 +3,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import Image from "next/image";
-import { AvatarType } from "./../@core/types/avatar";
+import { AvatarType } from "../@core/types/Avatar";
 
 interface AvatarProps {
   type: AvatarType;
