@@ -1,17 +1,16 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts', // Arquivo de entrada do seu aplicativo
+  entry: "./src/index.ts",
   output: {
-    path: path.resolve(__dirname, 'dist'), // Pasta de saída
-    filename: 'bundle.js', // Nome do arquivo de saída
-    libraryTarget: 'umd', // Define o formato de biblioteca para suportar diferentes ambientes (Node.js, navegador, etc.)
-    globalObject: 'this', // Ajusta o objeto global usado para definir a biblioteca
-    umdNamedDefine: true, // Usa a definição nomeada UMD
+    path: path.resolve(__dirname, "dist"),
+    filename: "index.js",
+    libraryTarget: "umd",
+    globalObject: "this",
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'], // Extensões de arquivo que o Webpack deve resolver
+    extensions: [".tsx", ".ts", ".js"], 
   },
   module: {
     rules: [
@@ -19,26 +18,36 @@ module.exports = {
         test: /\.(js|mjs|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: 'ts-loader',
+        use: "ts-loader",
       },
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+      ],
       },
     ],
   },
+  externals: {
+    react: "commonjs react",
+  },
+  target: "node",
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "./src/app/globals.css",
+    new CopyWebpackPlugin({
+        patterns: [
+            { from: 'src/app/globals.css', to: 'app/' },
+        ],
     }),
-  ],
+],
 };
