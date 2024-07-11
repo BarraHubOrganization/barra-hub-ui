@@ -30,6 +30,9 @@ interface ButtonProps {
   /** Estilo do botão */
   fillMode: FillModeType;
 
+  /** Define se o botão está ativo ou não*/
+  enable?: boolean;
+
   /** Função a ser executada quando o botão é clicado. */
   onClick?: () => void;
 }
@@ -38,20 +41,23 @@ export default function Button({
   text,
   icon,
   linkImage,
-  rounded,
-  shadow,
-  fillMode,
-  onClick
+  rounded = 'sm',
+  shadow = 'sm',
+  fillMode = 'solid',
+  enable = true,
+  onClick,
 }: ButtonProps) {
   return (
     <button
-      className={`${rounded && RoundedConsts[rounded]} ${shadow && ShadowConsts[shadow]} ${FillMode[fillMode]} w-auto h-10 flex justify-center items-center relative gap-2 p-2`} onClick={onClick}
+      disabled={!enable}
+      className={`${rounded && RoundedConsts[rounded]} ${shadow && ShadowConsts[shadow]} ${FillMode[fillMode]} ${!enable && "bg-neutral-200 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-400"} w-auto h-10 flex justify-center items-center relative gap-2 p-2`}
+      onClick={!enable ? () => {} : onClick}
     >
-        {icon && <FontAwesomeIcon icon={icon} className="text-xl" />}
-        {linkImage && (
-          <Image alt="image" src={linkImage} width={20} height={20} />
-        )}
-        {text && <span>{text}</span>}
+      {icon && <FontAwesomeIcon icon={icon} className="text-xl" />}
+      {linkImage && (
+        <Image alt="image" src={linkImage} width={20} height={20} />
+      )}
+      {text && <span>{text}</span>}
     </button>
   );
 }

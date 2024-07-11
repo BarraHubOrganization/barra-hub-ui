@@ -30,7 +30,7 @@ export default function Avatar({
   text,
   icon,
   linkImage,
-  rounded,
+  rounded = 'sm',
 }: AvatarProps) {
   return (
     <div
