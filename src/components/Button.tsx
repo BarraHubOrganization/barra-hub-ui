@@ -11,7 +11,7 @@ import { ShadowType } from "@/@core/types/Shadow";
 import { FillModeType } from "@/@core/types/FillMode";
 import { FillMode } from "@/@core/consts/FillMode";
 
-interface ButtonProps {
+interface Props {
   /** Texto a ser exibido dentro do botão. */
   text?: string;
 
@@ -42,11 +42,11 @@ export default function Button({
   icon,
   linkImage,
   rounded = 'sm',
-  shadow = 'sm',
+  shadow,
   fillMode = 'solid',
   enable = true,
   onClick,
-}: ButtonProps) {
+}: Props) {
   return (
     <button
       disabled={!enable}

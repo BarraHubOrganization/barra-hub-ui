@@ -8,7 +8,7 @@ import { AvatarType } from "@/@core/types/Avatar";
 import { RoundedType } from "@/@core/types/Rounded";
 import { RoundedConsts } from "@/@core/consts/Rounded";
 
-interface AvatarProps {
+interface Props {
   /** Tipo de avatar: pode ser "icon" para ícone, "text" para texto ou "image" para imagem. */
   type: AvatarType;
 
@@ -31,7 +31,7 @@ export default function Avatar({
   icon,
   linkImage,
   rounded = 'sm',
-}: AvatarProps) {
+}: Props) {
   return (
     <div
       className={`${RoundedConsts[rounded]} w-10 h-10 flex justify-center items-center transition-all duration-500 bg-red-500 relative`}

@@ -3,7 +3,7 @@ import Checkbox from "../components/Checkbox";
 import React from "react";
 
 export default {
-  title: "Navigation/Checkbox",
+  title: "Editors/Checkbox",
   component: Checkbox,
   tags: ['autodocs'],
 } as Meta<typeof Checkbox>;
