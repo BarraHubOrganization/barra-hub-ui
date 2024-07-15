@@ -4,12 +4,12 @@ import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { RoundedType } from "@/@core/types/Rounded";
-import { RoundedConsts } from "@/@core/consts/Rounded";
-import { ShadowConsts } from "@/@core/consts/Shadow";
-import { ShadowType } from "@/@core/types/Shadow";
-import { FillModeType } from "@/@core/types/FillMode";
-import { FillMode } from "@/@core/consts/FillMode";
+import { RoundedType } from "../@core/types/Rounded";
+import { RoundedConsts } from "../@core/consts/Rounded";
+import { ShadowConsts } from "../@core/consts/Shadow";
+import { ShadowType } from "../@core/types/Shadow";
+import { FillModeType } from "../@core/types/FillMode";
+import { FillMode } from "../@core/consts/FillMode";
 
 interface Props {
   /** Texto a ser exibido dentro do botão. */

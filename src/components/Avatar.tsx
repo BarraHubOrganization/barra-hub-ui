@@ -4,9 +4,9 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-import { AvatarType } from "@/@core/types/Avatar";
-import { RoundedType } from "@/@core/types/Rounded";
-import { RoundedConsts } from "@/@core/consts/Rounded";
+import { AvatarType } from "../@core/types/Avatar";
+import { RoundedType } from "../@core/types/Rounded";
+import { RoundedConsts } from "../@core/consts/Rounded";
 
 interface Props {
   /** Tipo de avatar: pode ser "icon" para ícone, "text" para texto ou "image" para imagem. */
