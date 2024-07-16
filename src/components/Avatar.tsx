@@ -34,7 +34,7 @@ export default function Avatar({
 }: Props) {
   return (
     <div
-      className={`${RoundedConsts[rounded]} w-10 h-10 flex justify-center items-center transition-all duration-500 bg-red-500 relative`}
+      className={`${RoundedConsts[rounded]} w-10 h-10 flex justify-center items-center transition-all duration-500 bg-primary relative`}
     >
       {type === "icon" && icon && (
         <FontAwesomeIcon icon={icon} className="text-white text-xl" />

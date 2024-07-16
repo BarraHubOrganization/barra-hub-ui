@@ -35,12 +35,12 @@ export default function Checkbox({
         id={id}
         type="checkbox"
         checked={checked}
-        className={`${!enable ? "bg-neutral-200 text-neutral-300" : " border border-gray-300 rounded-sm bg-white checked:bg-red-500"} focus:outline-none transition duration-200 cursor-pointer appearance-none h-5 w-5`}
+        className={`${!enable ? "bg-neutral-200 text-neutral-300" : " border border-neutral-300 rounded-sm bg-white checked:bg-primary"} focus:outline-none transition duration-200 cursor-pointer appearance-none h-5 w-5`}
         onChange={onChange}
       />
       <label
         htmlFor={id}
-        className={`${enable ? "text-neutral-800 hover:text-red-500" : "text-neutral-300"} ml-2 block w-full h-full  cursor-pointer`}
+        className={`${enable ? "text-neutral-800 hover:text-primary" : "text-neutral-300"} ml-2 block w-full h-full  cursor-pointer`}
       >
         {label}
       </label>

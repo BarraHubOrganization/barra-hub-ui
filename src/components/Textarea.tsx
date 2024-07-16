@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { RoundedConsts } from "../@core/consts/Rounded";
 import { RoundedType } from "../@core/types/Rounded";
 
@@ -8,11 +7,11 @@ interface Props {
   enable: boolean;
   rounded: RoundedType;
   label: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
   value?: string | number;
 }
 
-export default function Input({
+export default function Textarea({
   /** ID único para o input. Deve ser usado para associar o input ao label. */
   id,
 
@@ -53,7 +52,7 @@ export default function Input({
     }
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value: newValue } = event.target;
     setInternalValue(newValue);
     onChange && onChange(event);
@@ -66,11 +65,10 @@ export default function Input({
 
   return (
     <div className="relative">
-      <input
+      <textarea
         className={`peer ${rounded && RoundedConsts[rounded]} border border-neutral-200 focus:border-neutral-400 active:border-neutral-400 focus-visible:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3`}        
         disabled={!enable}
         id={id}
-        type="text"
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}

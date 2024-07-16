@@ -51,10 +51,10 @@ export default function Switch({
             enable
               ? checked
                 ? "bg-primary"
-                : "bg-gray-200"
+                : "bg-neutral-200"
               : checked
                 ? "bg-secondary"
-                : "bg-gray-100"
+                : "bg-neutral-100"
           }`}
         />
         <div

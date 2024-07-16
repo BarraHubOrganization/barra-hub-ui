@@ -1,7 +1,7 @@
 export const FillMode = {
-    solid: 'bg-red-500 hover:bg-red-500/[.85] text-white',
-    tonal: 'bg-red-200 hover:bg-red-200/[.85] text-red-500', 
-    outline: 'border border-solid border-red-500 text-red-500 hover:bg-red-200', 
-    link: 'text-red-500 underline underline-offset-2',
-    clear: 'text-red-500'    
+    solid: 'bg-primary hover:bg-primary/[.85] text-white',
+    tonal: 'bg-secondary hover:bg-secondary/[.85] text-primary', 
+    outline: 'border border-solid border-primary text-primary hover:bg-secondary', 
+    link: 'text-primary underline underline-offset-2',
+    clear: 'text-primary'    
 }
