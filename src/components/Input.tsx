@@ -57,7 +57,7 @@ export default function Input({
     const { value: newValue } = event.target;
     setInternalValue(newValue);
     onChange && onChange(event);
-    setIsFocused(!!newValue); // Mantém isFocused verdadeiro se houver um novo valor
+    setIsFocused(!!newValue); 
   };
 
   useEffect(() => {
