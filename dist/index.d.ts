@@ -6,5 +6,6 @@ export { default as Input } from "./components/Input";
 export { default as Progressbar } from "./components/Progressbar";
 export { default as Radio } from "./components/Radio";
 export { default as Sidebar } from "./components/Sidebar";
+export { default as Snackbar } from "./components/Snackbar";
 export { default as Switch } from "./components/Switch";
 export { default as Textarea } from "./components/Textarea";
