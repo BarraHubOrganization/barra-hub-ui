@@ -3,33 +3,31 @@ import { RoundedConsts } from "../@core/consts/Rounded";
 import { RoundedType } from "../@core/types/Rounded";
 
 interface Props {
+  /** ID único para o input. Deve ser usado para associar o input ao label. */
   id: string;
+
+  /** Indica se o input está habilitado ou desabilitado. */
   enable: boolean;
+
+  /** Tipo de arredondamento do input. */
   rounded: RoundedType;
+
+  /** Texto do label associado ao input. */
   label: string;
-  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+
+  /** Valor do input */
   value?: string | number;
+
+  /** Função chamada quando o valor do input muda. */
+  onChange?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
 export default function Textarea({
-  /** ID único para o input. Deve ser usado para associar o input ao label. */
   id,
-
-  /** Texto do label associado ao input. */
   label,
-
-  /** Indica se o input está habilitado ou desabilitado.
-  - true: habilitado
-  - false: desabilitado */
   enable,
-
-  /** Tipo de arredondamento do input. */
   rounded = "sm",
-
-  /** Valor do input */
   value,
-
-  /** Função chamada quando o valor do input muda. */
   onChange,
 }: Props) {
   const [isFocused, setIsFocused] = useState(false);
@@ -56,7 +54,7 @@ export default function Textarea({
     const { value: newValue } = event.target;
     setInternalValue(newValue);
     onChange && onChange(event);
-    setIsFocused(!!newValue); // Mantém isFocused verdadeiro se houver um novo valor
+    setIsFocused(!!newValue);
   };
 
   useEffect(() => {
@@ -66,7 +64,7 @@ export default function Textarea({
   return (
     <div className="relative">
       <textarea
-        className={`peer ${rounded && RoundedConsts[rounded]} border border-neutral-200 focus:border-neutral-400 active:border-neutral-400 focus-visible:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3`}        
+        className={`peer ${rounded && RoundedConsts[rounded]} border border-neutral-200 focus:border-neutral-400 active:border-neutral-400 focus-visible:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3`}
         disabled={!enable}
         id={id}
         onChange={handleChange}

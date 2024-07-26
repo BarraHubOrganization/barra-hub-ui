@@ -4,21 +4,19 @@ import { RoundedType } from "../@core/types/Rounded";
 import { RoundedConsts } from "../@core/consts/Rounded";
 
 interface Props {
+  /** Indica se o input está habilitado ou desabilitado. */
   enable: boolean;
+
+  /** Valor do input */
   value: number;
+
+  /** Tipo de arredondamento do input. */
   rounded: RoundedType;
 }
 
 export default function Progressbar({
-  /** Indica se o input está habilitado ou desabilitado.
-  - true: habilitado
-  - false: desabilitado */
   enable,
-
-  /** Valor do input */
   value,
-
-  /** Tipo de arredondamento do input. */
   rounded = "sm",
 }: Props) {
   const [leftTextColor, setLeftTextColor] = useState("text-black");

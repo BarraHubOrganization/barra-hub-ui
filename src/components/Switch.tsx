@@ -1,35 +1,31 @@
 import React from "react";
 
 interface Props {
+  /** ID único para o switch. Deve ser usado para associar o input ao label. */
   id: string;
+
+  /** Texto exibido quando o switch está ligado. */
   onText: string;
+
+  /** Texto exibido quando o switch está desligado. */
   offText: string;
+
+  /** Indica se o switch está habilitado ou desabilitado. */
   enable?: boolean;
+
+  /** Indica se o switch está marcado.*/
   checked?: boolean;
+
+  /** Função chamada quando o estado do switch muda. */
   onChange?: () => void;
 }
 
 export default function Switch({
-   /** ID único para o switch. Deve ser usado para associar o input ao label. */
   id,
-
-  /** Texto exibido quando o switch está ligado. */
   onText,
-
-  /** Texto exibido quando o switch está desligado. */
   offText,
-
-  /** Indica se o switch está habilitado ou desabilitado.
-  - true: habilitado
-  - false: desabilitado */
   enable,
-
-  /** Indica se o switch está marcado (ligado).
-  - true: marcado (ligado)
-  - false: não marcado (desligado) */
   checked,
-
-  /** Função chamada quando o estado do switch muda. */
   onChange,
 }: Props) {
   return (
@@ -58,14 +54,10 @@ export default function Switch({
           }`}
         />
         <div
-          className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform ${
-            checked ? "translate-x-5" : ""
-          }`}
+          className={`absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform ${checked ? "translate-x-5" : ""}`}
         />
         <span
-          className={`ml-3 text-sm ${
-            enable ? "text-neutral-800" : "text-neutral-300"
-          }`}
+          className={`ml-3 text-sm ${enable ? "text-neutral-800" : "text-neutral-300"}`}
         >
           {checked ? onText : offText}
         </span>

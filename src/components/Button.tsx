@@ -35,6 +35,8 @@ interface Props {
 
   /** Função a ser executada quando o botão é clicado. */
   onClick?: () => void;
+
+  [x: string]: any;
 }
 
 export default function Button({
@@ -46,12 +48,14 @@ export default function Button({
   fillMode = 'solid',
   enable = true,
   onClick,
+  ...props
 }: Props) {
   return (
     <button
       disabled={!enable}
       className={`${rounded && RoundedConsts[rounded]} ${shadow && ShadowConsts[shadow]} ${FillMode[fillMode]} ${!enable && "bg-neutral-200 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-400"} w-auto h-10 flex justify-center items-center relative gap-2 p-2`}
       onClick={!enable ? () => {} : onClick}
+      {...props}
     >
       {icon && <FontAwesomeIcon icon={icon} className="text-xl" />}
       {linkImage && (
