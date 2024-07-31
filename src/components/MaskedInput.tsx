@@ -36,7 +36,7 @@ export default function MaskedInput({
     };
   
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const inputValue = event.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+      const inputValue = event.target.value.replace(/\D/g, '');
       const maskedValue = applyMask(inputValue, mask);
       setInternalValue(maskedValue);
       onChange(inputValue);

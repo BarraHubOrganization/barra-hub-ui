@@ -20,6 +20,7 @@ interface Props {
     enable?: boolean;
     /** Função a ser executada quando o botão é clicado. */
     onClick?: () => void;
+    [x: string]: any;
 }
-export default function Button({ text, icon, linkImage, rounded, shadow, fillMode, enable, onClick, }: Props): React.JSX.Element;
+export default function Button({ text, icon, linkImage, rounded, shadow, fillMode, enable, onClick, ...props }: Props): React.JSX.Element;
 export {};

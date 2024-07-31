@@ -3,9 +3,10 @@ import { Meta, StoryFn } from "@storybook/react";
 import Loader from "../components/Loader";
 
 export default {
-  title: "Navigation/Loader",
+  title: "Interactivity/Loader",
   component: Loader,
   tags: ["autodocs"],
+  decorators: [(Story) => <div style={{ height: '100vh', width: '100vw' }}><Story /></div>]
 } as Meta<typeof Loader>;
 
 const Template: StoryFn<typeof Loader> = (args) => {

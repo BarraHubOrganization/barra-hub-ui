@@ -2,15 +2,21 @@ import "./app/globals.css";
 
 export { default as Avatar } from "./components/Avatar";
 export { default as Button } from "./components/Button";
+export { default as Card } from "./components/Card";
 export { default as Checkbox } from "./components/Checkbox";
+export { default as Editor } from "./components/Editor";
 export { default as Input } from "./components/Input";
 export { default as Loader } from "./components/Loader";
+export { default as MaskedInput } from "./components/MaskedInput";
+export { default as Modal } from "./components/Modal";
 export { default as Progressbar } from "./components/Progressbar";
 export { default as Radio } from "./components/Radio";
 export { default as Select } from "./components/Select";
 export { default as Sidebar } from "./components/Sidebar";
 export { default as Snackbar } from "./components/Snackbar";
 export { default as Switch } from "./components/Switch";
+export { default as Table } from "./components/Table";
+export { default as Tabs } from "./components/Tabs";
 export { default as Textarea } from "./components/Textarea";
 export { default as Tooltip } from "./components/Tooltip";
-
+export { default as UploadButton } from "./components/UploadButton";

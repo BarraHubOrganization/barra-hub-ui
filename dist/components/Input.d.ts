@@ -1,26 +1,21 @@
 import React from "react";
 import { RoundedType } from "../@core/types/Rounded";
+import { InputType } from "../@core/types/Input";
+interface ValidationRule {
+    rule: (value: string) => boolean;
+    message: string;
+}
 interface Props {
     id: string;
+    type: InputType;
     enable: boolean;
     rounded: RoundedType;
     label: string;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
     value?: string | number;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    required?: boolean;
+    validations?: ValidationRule[];
+    errorMessage?: string;
 }
-export default function Input({ 
-/** ID único para o input. Deve ser usado para associar o input ao label. */
-id, 
-/** Texto do label associado ao input. */
-label, 
-/** Indica se o input está habilitado ou desabilitado.
-- true: habilitado
-- false: desabilitado */
-enable, 
-/** Tipo de arredondamento do input. */
-rounded, 
-/** Valor do input */
-value, 
-/** Função chamada quando o valor do input muda. */
-onChange, }: Props): React.JSX.Element;
+export default function Input({ id, type, label, enable, rounded, value, onChange, required, validations, errorMessage, }: Props): React.JSX.Element;
 export {};

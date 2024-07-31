@@ -3,7 +3,7 @@ import { Meta, StoryFn } from "@storybook/react";
 import MaskedInput from "../components/MaskedInput";
 
 export default {
-  title: "Navigation/MaskedInput",
+  title: "Editors/MaskedInput",
   component: MaskedInput,
   tags: ["autodocs"],
 } as Meta<typeof MaskedInput>;
