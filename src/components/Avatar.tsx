@@ -21,8 +21,11 @@ interface Props {
   /** URL da imagem a ser exibida se o tipo for "image". */
   linkImage?: string;
 
-   /** Define a borda arredondada do avatar. */
+  /** Define a borda arredondada do avatar. */
   rounded: RoundedType;
+
+  /** Define o tamanho do avatar.*/
+  size: number;
 }
 
 export default function Avatar({
@@ -30,11 +33,13 @@ export default function Avatar({
   text,
   icon,
   linkImage,
-  rounded = 'sm',
+  rounded = "sm",
+  size = 40
 }: Props) {
   return (
     <div
-      className={`${RoundedConsts[rounded]} w-10 h-10 flex justify-center items-center transition-all duration-500 bg-primary relative`}
+      className={`${RoundedConsts[rounded]} flex justify-center items-center transition-all duration-500 bg-primary relative`}
+      style={{ width: size, height: size }}
     >
       {type === "icon" && icon && (
         <FontAwesomeIcon icon={icon} className="text-white text-xl" />
@@ -44,11 +49,11 @@ export default function Avatar({
       )}
       {type === "image" && linkImage && (
         <Image
-        alt="avatar image" 
-        src={linkImage} 
-        layout="fill" 
-        objectFit="cover" 
-        className={`${rounded}`} 
+          alt="avatar image"
+          src={linkImage}
+          layout="fill"
+          objectFit="cover"
+          className={`${rounded}`}
         />
       )}
     </div>

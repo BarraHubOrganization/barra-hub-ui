@@ -33,6 +33,7 @@ interface Props {
   /** Define se o botão está ativo ou não*/
   enable?: boolean;
 
+  backgroundColor?: string;
   /** Função a ser executada quando o botão é clicado. */
   onClick?: () => void;
 
@@ -47,15 +48,47 @@ export default function Button({
   shadow,
   fillMode = 'solid',
   enable = true,
+  backgroundColor,
   onClick,
   ...props
 }: Props) {
+  const getTextColor = (backgroundColor: string) => {
+    const hexToRgb = (hex: string) => {
+      let r = 0, g = 0, b = 0;
+      if (hex.length === 4) {
+        r = parseInt(hex[1] + hex[1], 16);
+        g = parseInt(hex[2] + hex[2], 16);
+        b = parseInt(hex[3] + hex[3], 16);
+      }
+      else if (hex.length === 7) {
+        r = parseInt(hex[1] + hex[2], 16);
+        g = parseInt(hex[3] + hex[4], 16);
+        b = parseInt(hex[5] + hex[6], 16);
+      }
+      return [r, g, b];
+    };
+
+    const [r, g, b] = hexToRgb(backgroundColor);
+    const luminance = (r * 0.2126 + g * 0.7152 + b * 0.0722) / 255;
+    return luminance < 0.5 ? "#FFFFFF" : "#000000";
+  };
+
+  const getTailwindColorClass = (color: string) => {
+    const colorCode = color.replace('#', '').toLowerCase();    
+    return `bg-[#${colorCode}]`;
+  };
+
+  const backgroundClass = backgroundColor && getTailwindColorClass(backgroundColor);
+  const textClass = backgroundColor && getTextColor(backgroundColor);
+  const fillModeClass = FillMode[fillMode] || FillMode.solid;
+
   return (
     <button
       disabled={!enable}
-      className={`${rounded && RoundedConsts[rounded]} ${shadow && ShadowConsts[shadow]} ${FillMode[fillMode]} ${!enable && "bg-neutral-200 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-400"} w-auto h-10 flex justify-center items-center relative gap-2 p-2`}
+      className={`${backgroundClass} ${rounded && RoundedConsts[rounded]} ${shadow && ShadowConsts[shadow]} ${fillModeClass} ${!enable && "bg-neutral-200 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-400"} w-auto h-10 flex justify-center items-center relative gap-2 p-2`}
       onClick={!enable ? () => {} : onClick}
       {...props}
+      style={{ backgroundColor: backgroundColor, color: textClass, border: backgroundColor}}
     >
       {icon && <FontAwesomeIcon icon={icon} className="text-xl" />}
       {linkImage && (

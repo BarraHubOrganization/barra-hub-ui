@@ -18,9 +18,10 @@ interface Props {
     fillMode: FillModeType;
     /** Define se o botão está ativo ou não*/
     enable?: boolean;
+    backgroundColor?: string;
     /** Função a ser executada quando o botão é clicado. */
     onClick?: () => void;
     [x: string]: any;
 }
-export default function Button({ text, icon, linkImage, rounded, shadow, fillMode, enable, onClick, ...props }: Props): React.JSX.Element;
+export default function Button({ text, icon, linkImage, rounded, shadow, fillMode, enable, backgroundColor, onClick, ...props }: Props): React.JSX.Element;
 export {};
