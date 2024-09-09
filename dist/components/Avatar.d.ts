@@ -14,7 +14,7 @@ interface Props {
     /** Define a borda arredondada do avatar. */
     rounded: RoundedType;
     /** Define o tamanho do avatar.*/
-    size: number;
+    size?: number;
 }
 export default function Avatar({ type, text, icon, linkImage, rounded, size }: Props): React.JSX.Element;
 export {};

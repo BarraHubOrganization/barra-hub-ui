@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, StoryFn } from "@storybook/react";
 import Modal from "../components/Modal";
+import { faBuilding } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   title: "Layout/Modal",
@@ -19,7 +20,11 @@ const Template: StoryFn<typeof Modal> = (args) => {
 
 export const ComponentModal = Template.bind({});
 ComponentModal.args = {
+  iconTitle: faBuilding,
+  title: 'Cadastro de empresas',
   isVisible: true,
   onClose: ()=>{},
   content: <div>Your modal content here</div>,
+  textButton: 'Salvar',
+  onClickButton: ()=>{},
 };

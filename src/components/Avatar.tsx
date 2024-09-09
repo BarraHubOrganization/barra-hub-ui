@@ -25,7 +25,7 @@ interface Props {
   rounded: RoundedType;
 
   /** Define o tamanho do avatar.*/
-  size: number;
+  size?: number;
 }
 
 export default function Avatar({

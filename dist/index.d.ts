@@ -3,6 +3,7 @@ export { default as Avatar } from "./components/Avatar";
 export { default as Button } from "./components/Button";
 export { default as Card } from "./components/Card";
 export { default as Checkbox } from "./components/Checkbox";
+export { default as Collapse } from "./components/Collapse";
 export { default as Editor } from "./components/Editor";
 export { default as Input } from "./components/Input";
 export { default as Loader } from "./components/Loader";
