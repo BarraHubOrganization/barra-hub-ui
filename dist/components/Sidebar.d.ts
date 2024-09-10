@@ -1,5 +1,5 @@
-import { ItemsSidebar } from "../@core/interfaces/Sidebar";
 import React from "react";
+import { ItemsSidebar } from "../@core/interfaces/Sidebar";
 interface Props {
     /** Nome de usuário para exibição no sidebar. */
     username: string;

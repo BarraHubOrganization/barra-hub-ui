@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import router from "next/router";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -6,20 +7,19 @@ import {
   faCircleChevronLeft,
   faCircleChevronRight,
   faUser,
-  faBars
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { ItemsSidebar } from "../@core/interfaces/Sidebar";
-import React from "react";
 
 interface Props {
-   /** Nome de usuário para exibição no sidebar. */
+  /** Nome de usuário para exibição no sidebar. */
   username: string;
 
-   /** Tipo de perfil do usuário para exibição no sidebar. */
+  /** Tipo de perfil do usuário para exibição no sidebar. */
   profile: string;
 
-   /** Itens de navegação a serem exibidos no sidebar. */
+  /** Itens de navegação a serem exibidos no sidebar. */
   itemsSidebar: ItemsSidebar[];
 }
 
@@ -30,12 +30,19 @@ export default function SideBar(props: Props) {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleNavigation = (link: string) => {
+    router.push(link);
+  };
+
   return (
     <article className="h-screen">
       <button
-        className={"sm:hidden flex items-center justify-center top-5 w-6 h-6 p-1 mt-4 left-1/2 fixed z-50"}
+        className={
+          "sm:hidden flex items-center justify-center top-5 w-6 h-6 p-1 mt-4 left-1/2 fixed z-50"
+        }
         onClick={toggleSidebar}
         title={isSidebarOpen ? "Fechar barra lateral" : "Abrir barra lateral"}
+        aria-expanded={isSidebarOpen}
       >
         <FontAwesomeIcon icon={faBars} className="text-primary text-3xl" />
       </button>
@@ -43,8 +50,11 @@ export default function SideBar(props: Props) {
         className={`fixed flex flex-col items-center gap-4 bg-neutral-50 min-w-16 min-h-screen shadow-sm transition-all duration-500 shadow-white p-3 ${isSidebarOpen ? "sm:w-44 w-full" : "sm:w-16 sm:flex hidden"}`}
       >
         <button
-          className={"sm:flex hidden items-center justify-center w-6 h-6 p-1 mt-4"}
+          className={
+            "sm:flex hidden items-center justify-center w-6 h-6 p-1 mt-4"
+          }
           onClick={toggleSidebar}
+          aria-expanded={isSidebarOpen}
           title={isSidebarOpen ? "Fechar barra lateral" : "Abrir barra lateral"}
         >
           <div className="flex items-center">
@@ -68,7 +78,11 @@ export default function SideBar(props: Props) {
           )}
         </div>
         {props.itemsSidebar.map((item, index) => (
-          <div key={index} className="flex w-full gap-2 justify-center items-center text-neutral-800 hover:bg-primary hover:text-white transition-all duration-500 p-2 rounded-md cursor-pointer">
+          <div
+            key={index}
+            className="flex w-full gap-2 justify-center items-center text-neutral-800 hover:bg-primary hover:text-white transition-all duration-500 p-2 rounded-md cursor-pointer"
+            onClick={() => handleNavigation(item.link)} 
+          >
             <FontAwesomeIcon icon={faChartLine} className="text-xl" />
             {isSidebarOpen && <span className="text-md">{item.name}</span>}
           </div>
