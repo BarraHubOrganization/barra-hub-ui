@@ -1,9 +1,10 @@
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import React, { ReactNode, useState } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ReactNode, useState } from "react";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 interface SubCollapse {
-  title: string;
+  title: ReactNode;
   content: ReactNode;
   subCollapse?: SubCollapse[];
 }
@@ -13,7 +14,7 @@ interface Props {
   title: ReactNode;
 
   /** Define o conteúdo que será exibido quando o subcollapse estiver expandido, pode ser um conteúdo HTML. */
-  children: ReactNode;
+  children?: ReactNode;
 
   /**  Lista opcional de sub-itens, representada por um array de objetos contendo `title` e `content`. */
   subCollapse?: SubCollapse[];
@@ -32,8 +33,8 @@ export default function Collapse({ title, children, subCollapse = [] }: Props) {
         className="bg-primary px-4 py-2 cursor-pointer flex justify-between items-center"
         onClick={toggleCollapse}
       >
-        <span>{title}</span>
-        <span>
+        <span className="text-white">{title}</span>
+        <span className="text-white">
           {isOpen ? (
             <FontAwesomeIcon icon={faChevronUp} />
           ) : (
@@ -42,9 +43,9 @@ export default function Collapse({ title, children, subCollapse = [] }: Props) {
         </span>
       </div>
       <div
-        className={`transition-all overflow-hidden ${isOpen ? "max-h-screen" : "max-h-0"}`}
+        className={`transition-all ${isOpen ? "" : "hidden"}`}
       >
-        <div className="p-4 text-neutral-600">{children}</div>
+        <div className="p-4 text-neutral-600 ">{children}</div>
         {subCollapse.length > 0 &&
           subCollapse.map((sub, index) => (
             <div key={index} className="m-4">

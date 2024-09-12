@@ -15,6 +15,8 @@ interface Props {
     dataSource: RowData[];
     selectable?: boolean;
     itemsPerPage?: number;
+    textButton?: string;
+    onClickButton?: () => void;
 }
-export default function Table({ columns, dataSource, selectable, itemsPerPage, }: Props): React.JSX.Element;
+export default function Table({ columns, dataSource, selectable, itemsPerPage, textButton, onClickButton, }: Props): React.JSX.Element;
 export {};

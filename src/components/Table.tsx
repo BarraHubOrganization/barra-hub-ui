@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent } from "react";
-import Card from "./Card";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -8,6 +8,10 @@ import {
   faSortAsc,
   faSortDesc,
 } from "@fortawesome/free-solid-svg-icons";
+
+import Button from "./Button";
+import Card from "./Card";
+import Input from "./Input";
 
 interface Column {
   field: string;
@@ -26,14 +30,18 @@ interface Props {
   columns: Column[];
   dataSource: RowData[];
   selectable?: boolean;
-  itemsPerPage?: number; // Número de itens por página
+  itemsPerPage?: number;
+  textButton?: string;
+  onClickButton?: () => void;
 }
 
 export default function Table({
   columns,
   dataSource,
   selectable = false,
-  itemsPerPage = 5, // Valor padrão
+  itemsPerPage = 5,
+  textButton,
+  onClickButton,
 }: Props) {
   const [selectedRows, setSelectedRows] = useState<Set<number>>(new Set());
   const [sortedColumn, setSortedColumn] = useState<Column | null>(null);
@@ -97,9 +105,7 @@ export default function Table({
         <button
           key={i}
           className={`px-3 py-1 mx-1 rounded ${
-            i === currentPage
-              ? "bg-primary text-white"
-              : "text-neutral-700"
+            i === currentPage ? "bg-primary text-white" : "text-neutral-700"
           }`}
           onClick={() => setCurrentPage(i)}
         >
@@ -117,18 +123,25 @@ export default function Table({
         <>
           <div className="flex items-center">
             <div className="relative w-full p-3">
-              <input
+              <Input
                 type="text"
-                placeholder="Pesquisar..."
-                className="border border-neutral-300 p-2 pl-10 rounded w-full"
                 value={searchQuery}
                 onChange={handleSearch}
-              />
-              <FontAwesomeIcon
-                icon={faSearch}
-                className="absolute left-6 top-1/2 transform -translate-y-1/2 w-4 h-4 text-neutral-400"
-              />
+                rounded="sm"
+                enable={true}
+                id="inputSearch"
+                label="Pesquisar"
+              />              
             </div>
+            {textButton && (
+              <div className="mr-3">
+                <Button
+                  fillMode="solid"
+                  text={textButton}
+                  onClick={onClickButton}
+                />
+              </div>
+            )}
           </div>
           <table className="w-full border-collapse bg-white">
             <thead>

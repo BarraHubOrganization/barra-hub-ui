@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import router from "next/router";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { ItemsSidebar } from "../@core/interfaces/Sidebar";
+import Link from "next/link";
 
 interface Props {
   /** Nome de usuário para exibição no sidebar. */
@@ -28,10 +28,6 @@ export default function SideBar(props: Props) {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleNavigation = (link: string) => {
-    router.push(link);
   };
 
   return (
@@ -78,14 +74,14 @@ export default function SideBar(props: Props) {
           )}
         </div>
         {props.itemsSidebar.map((item, index) => (
-          <div
+          <Link
+            href={item.link}
             key={index}
             className="flex w-full gap-2 justify-center items-center text-neutral-800 hover:bg-primary hover:text-white transition-all duration-500 p-2 rounded-md cursor-pointer"
-            onClick={() => handleNavigation(item.link)} 
           >
             <FontAwesomeIcon icon={faChartLine} className="text-xl" />
             {isSidebarOpen && <span className="text-md">{item.name}</span>}
-          </div>
+          </Link>
         ))}
       </div>
     </article>
