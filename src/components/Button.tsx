@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -44,55 +44,78 @@ export default function Button({
   text,
   icon,
   linkImage,
-  rounded = 'sm',
+  rounded = "sm",
   shadow,
-  fillMode = 'solid',
+  fillMode = "solid",
   enable = true,
-  backgroundColor,
+  backgroundColor = "#EF4444",
   onClick,
   ...props
 }: Props) {
-  const getTextColor = (backgroundColor: string) => {
-    const hexToRgb = (hex: string) => {
-      let r = 0, g = 0, b = 0;
-      if (hex.length === 4) {
-        r = parseInt(hex[1] + hex[1], 16);
-        g = parseInt(hex[2] + hex[2], 16);
-        b = parseInt(hex[3] + hex[3], 16);
-      }
-      else if (hex.length === 7) {
-        r = parseInt(hex[1] + hex[2], 16);
-        g = parseInt(hex[3] + hex[4], 16);
-        b = parseInt(hex[5] + hex[6], 16);
-      }
-      return [r, g, b];
-    };
+  const [isMounted, setIsMounted] = useState(false);
+  const [clientBackgroundColor, setClientBackgroundColor] = useState<string>(
+    backgroundColor ? backgroundColor : ""
+  );
+  const [textColor, setTextColor] = useState<string>("#FFFFFF");
 
-    const [r, g, b] = hexToRgb(backgroundColor);
-    const luminance = (r * 0.2126 + g * 0.7152 + b * 0.0722) / 255;
-    return luminance < 0.5 ? "#FFFFFF" : "#000000";
-  };
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+  
+  useEffect(() => {
+    if (isMounted) {
+      const getTextColor = (bgColor: string) => {
+        const hexToRgb = (hex: string) => {
+          let r = 0,
+            g = 0,
+            b = 0;
+          if (hex.length === 4) {
+            r = parseInt(hex[1] + hex[1], 16);
+            g = parseInt(hex[2] + hex[2], 16);
+            b = parseInt(hex[3] + hex[3], 16);
+          } else if (hex.length === 7) {
+            r = parseInt(hex[1] + hex[2], 16);
+            g = parseInt(hex[3] + hex[4], 16);
+            b = parseInt(hex[5] + hex[6], 16);
+          }
+          return [r, g, b];
+        };
 
-  const getTailwindColorClass = (color: string) => {
-    const colorCode = color.replace('#', '').toLowerCase();    
-    return `bg-[#${colorCode}]`;
-  };
+        const [r, g, b] = hexToRgb(bgColor);
+        const luminance = (r * 0.2126 + g * 0.7152 + b * 0.0722) / 255;
+        return luminance < 0.5 ? "#FFFFFF" : "#000000";
+      };
 
-  const backgroundClass = backgroundColor && getTailwindColorClass(backgroundColor);
-  const textClass = backgroundColor && getTextColor(backgroundColor);
+      setTextColor(getTextColor(clientBackgroundColor));
+    }
+  }, [clientBackgroundColor, isMounted]);
+
+  useEffect(() => {
+    setClientBackgroundColor(backgroundColor);
+  }, [backgroundColor]);
+
   const fillModeClass = FillMode[fillMode] || FillMode.solid;
 
   return (
     <button
       disabled={!enable}
-      className={`${backgroundClass} ${rounded && RoundedConsts[rounded]} ${shadow && ShadowConsts[shadow]} ${fillModeClass} ${!enable && "bg-neutral-200 text-neutral-400 hover:bg-neutral-200 hover:text-neutral-400"} w-auto h-10 flex justify-center items-center relative gap-2 p-2`}
-      onClick={!enable ? () => {} : onClick}
+      className={` 
+        ${rounded && RoundedConsts[rounded]} 
+        ${shadow && ShadowConsts[shadow]} 
+        ${fillModeClass} 
+        ${!enable ? "bg-neutral-200 text-neutral-400" : ""} 
+        w-auto h-10 flex justify-center items-center gap-2 p-2`}
+      onClick={enable ? onClick : undefined}
+      style={{
+        backgroundColor: backgroundColor,
+        color: textColor,
+        border: enable ? "none" : "1px solid #ccc",
+      }}
       {...props}
-      style={{ backgroundColor: backgroundColor, color: textClass, border: backgroundColor}}
     >
       {icon && <FontAwesomeIcon icon={icon} className="text-xl" />}
       {linkImage && (
-        <Image alt="image" src={linkImage} width={20} height={20} />
+        <Image alt="button image" src={linkImage} width={20} height={20} />
       )}
       {text && <span>{text}</span>}
     </button>

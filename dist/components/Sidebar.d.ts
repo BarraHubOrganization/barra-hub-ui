@@ -7,6 +7,7 @@ interface Props {
     profile: string;
     /** Itens de navegação a serem exibidos no sidebar. */
     itemsSidebar: ItemsSidebar[];
+    onClickLogout: () => void;
 }
-export default function SideBar(props: Props): React.JSX.Element;
+export default function SideBar({ username, profile, itemsSidebar, onClickLogout, }: Props): React.JSX.Element;
 export {};

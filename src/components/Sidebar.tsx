@@ -1,16 +1,16 @@
 import React, { useState } from "react";
+import Link from "next/link";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChartLine,
   faCircleChevronLeft,
   faCircleChevronRight,
   faUser,
   faBars,
+  faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { ItemsSidebar } from "../@core/interfaces/Sidebar";
-import Link from "next/link";
 
 interface Props {
   /** Nome de usuário para exibição no sidebar. */
@@ -21,9 +21,16 @@ interface Props {
 
   /** Itens de navegação a serem exibidos no sidebar. */
   itemsSidebar: ItemsSidebar[];
+
+  onClickLogout: () => void;
 }
 
-export default function SideBar(props: Props) {
+export default function SideBar({
+  username,
+  profile,
+  itemsSidebar,
+  onClickLogout,
+}: Props) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -34,7 +41,7 @@ export default function SideBar(props: Props) {
     <article className="h-screen">
       <button
         className={
-          "sm:hidden flex items-center justify-center top-5 w-6 h-6 p-1 mt-4 left-1/2 fixed z-50"
+          "sm:hidden flex items-center justify-center top-5 w-6 h-6 p-1 mt-4 left-1/2 fixed z-[999]"
         }
         onClick={toggleSidebar}
         title={isSidebarOpen ? "Fechar barra lateral" : "Abrir barra lateral"}
@@ -43,7 +50,7 @@ export default function SideBar(props: Props) {
         <FontAwesomeIcon icon={faBars} className="text-primary text-3xl" />
       </button>
       <div
-        className={`fixed flex flex-col items-center gap-4 bg-neutral-50 min-w-16 min-h-screen shadow-sm transition-all duration-500 shadow-white p-3 ${isSidebarOpen ? "sm:w-44 w-full" : "sm:w-16 sm:flex hidden"}`}
+        className={`flex sm:fixed z-[999] flex-col items-center gap-4 bg-neutral-50 min-w-16 min-h-screen shadow-sm transition-all duration-500 shadow-white p-3 ${isSidebarOpen ? "sm:w-44 w-full" : "sm:w-16 sm:flex hidden"}`}
       >
         <button
           className={
@@ -68,21 +75,29 @@ export default function SideBar(props: Props) {
           </div>
           {isSidebarOpen && (
             <div className="flex flex-col leading-5 text-neutral-800">
-              <span className="font-semibold">{props.username}</span>
-              <span className="font-light">{props.profile}</span>
+              <span className="font-semibold">{username}</span>
+              <span className="font-light">{profile}</span>
             </div>
           )}
         </div>
-        {props.itemsSidebar.map((item, index) => (
+        {itemsSidebar.map((item, index) => (
           <Link
             href={item.link}
             key={index}
             className="flex w-full gap-2 justify-center items-center text-neutral-800 hover:bg-primary hover:text-white transition-all duration-500 p-2 rounded-md cursor-pointer"
           >
-            <FontAwesomeIcon icon={faChartLine} className="text-xl" />
+            <FontAwesomeIcon icon={item.icon} className="text-xl" />
             {isSidebarOpen && <span className="text-md">{item.name}</span>}
           </Link>
         ))}
+
+        <div
+          className="flex w-full gap-2 justify-center items-center text-neutral-800 hover:bg-primary hover:text-white transition-all duration-500 p-2 rounded-md cursor-pointer"
+          onClick={onClickLogout}
+        >
+          <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-xl" />
+          {isSidebarOpen && <span className="text-md">Sair</span>}
+        </div>
       </div>
     </article>
   );

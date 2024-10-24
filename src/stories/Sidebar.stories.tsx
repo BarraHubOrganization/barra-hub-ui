@@ -1,6 +1,7 @@
 import { Meta, StoryFn } from "@storybook/react";
 import Sidebar from "../components/Sidebar";
 import React from "react";
+import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   title: "Navigation/Sidebar",
@@ -16,5 +17,5 @@ export const ComponentSidebar = Template.bind({});
 ComponentSidebar.args = {
   username: "Vitória Fusco",
   profile: "Administrador",
-  itemsSidebar: [{ link: "www.google.com.br", name: "Fluxo de caixa" }],
+  itemsSidebar: [{ link: "www.google.com.br", name: "Fluxo de caixa", icon: faChartLine }],
 };
