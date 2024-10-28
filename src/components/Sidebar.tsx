@@ -50,7 +50,7 @@ export default function SideBar({
         <FontAwesomeIcon icon={faBars} className="text-primary text-3xl" />
       </button>
       <div
-        className={`flex sm:fixed z-[999] flex-col items-center gap-4 bg-neutral-50 min-w-16 min-h-screen shadow-sm transition-all duration-500 shadow-white p-3 ${isSidebarOpen ? "sm:w-44 w-full" : "sm:w-16 sm:flex hidden"}`}
+        className={`flex max-[639px]:fixed z-[999] flex-col items-center gap-4 bg-neutral-50 min-w-16 min-h-screen shadow-sm transition-all duration-500 shadow-white p-3 ${isSidebarOpen ? "sm:w-44 w-full" : "sm:w-16 sm:flex hidden"}`}
       >
         <button
           className={
