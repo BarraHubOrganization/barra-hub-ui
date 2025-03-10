@@ -1,7 +1,7 @@
 import React from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { AvatarType } from "../@core/types/Avatar";
 import { RoundedType } from "../@core/types/Rounded";
+import { AvatarType } from "@/@core/types/avatar";
 interface Props {
     /** Tipo de avatar: pode ser "icon" para ícone, "text" para texto ou "image" para imagem. */
     type: AvatarType;

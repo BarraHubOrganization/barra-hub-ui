@@ -1,37 +1,39 @@
+//system
 import React, { useState, useEffect } from "react";
 
+//consts
 import { RoundedConsts } from "../@core/consts/Rounded";
+
+//types
 import { RoundedType } from "../@core/types/Rounded";
 
-interface GenericSelect {
-  key: number | string;
-  value: string;
-}
+//interfaces
+import { IKeyValuePair } from "@/@core/interfaces/IKeyValuePair";
 
 interface Props {
-   /** Identificador único para o input */
-   id: string;
+  /** Identificador único para o input */
+  id: string;
 
-   /** Lista de opções disponíveis no select */
-   options: GenericSelect[];
- 
-   /** Nome do campo select */
-   name: string;
- 
-   /** Indica se o select está habilitado ou desabilitado */
-   enable: boolean;
- 
-   /** Tipo de arredondamento do select */
-   rounded: RoundedType;
- 
-   /** Texto do label associado ao select */
-   label: string;
- 
-   /** Função chamada quando o valor do select muda */
-   onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
- 
-   /** Valor atualmente selecionado no select */
-   value?: string | number;
+  /** Lista de opções disponíveis no select */
+  options: IKeyValuePair[];
+
+  /** Nome do campo select */
+  name: string;
+
+  /** Indica se o select está habilitado ou desabilitado */
+  enable: boolean;
+
+  /** Tipo de arredondamento do select */
+  rounded: RoundedType;
+
+  /** Texto do label associado ao select */
+  label: string;
+
+  /** Função chamada quando o valor do select muda */
+  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+
+  /** Valor atualmente selecionado no select */
+  value?: string | number;
 }
 
 export default function Select({
@@ -69,7 +71,7 @@ export default function Select({
         id={id}
         name={name}
         className={`${rounded && RoundedConsts[rounded]} ${
-          enable ? "" : "bg-neutral-50"
+          enable ? "bg-white" : "bg-neutral-50"
         } border border-neutral-200 focus:border-neutral-400 active:border-neutral-400 focus-visible:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3`}
         disabled={!enable}
         onChange={handleChange}
@@ -81,7 +83,7 @@ export default function Select({
           <option
             value={option.key}
             key={option.key}
-            className="hover:bg-tertiary"
+            className="hover:bg-red-500"
           >
             {option.value}
           </option>

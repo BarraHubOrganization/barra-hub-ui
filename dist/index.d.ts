@@ -9,6 +9,7 @@ export { default as Input } from "./components/Input";
 export { default as Loader } from "./components/Loader";
 export { default as MaskedInput } from "./components/MaskedInput";
 export { default as Modal } from "./components/Modal";
+export { default as MultiSelect } from "./components/MultiSelect";
 export { default as Progressbar } from "./components/Progressbar";
 export { default as Radio } from "./components/Radio";
 export { default as Select } from "./components/Select";

@@ -10,7 +10,7 @@ import {
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { ItemsSidebar } from "../@core/interfaces/Sidebar";
+import { IItemsSidebar } from "../@core/interfaces/ISidebar";
 
 interface Props {
   /** Nome de usuário para exibição no sidebar. */
@@ -20,7 +20,7 @@ interface Props {
   profile: string;
 
   /** Itens de navegação a serem exibidos no sidebar. */
-  itemsSidebar: ItemsSidebar[];
+  itemsSidebar: IItemsSidebar[];
 
   onClickLogout: () => void;
 }

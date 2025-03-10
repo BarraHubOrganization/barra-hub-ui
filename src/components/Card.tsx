@@ -6,11 +6,13 @@ import { ShadowType } from "../@core/types/Shadow";
 import { ShadowConsts } from "../@core/consts/Shadow";
 
 interface Props {
+  /** Conteúdo do card, permite o tipo texto ou html. */
   content: ReactNode;
 
   /** Define a borda arredondada do avatar. */
   rounded: RoundedType;
 
+  /** Define a sombra do avatar. */
   shadow: ShadowType;
 }
 

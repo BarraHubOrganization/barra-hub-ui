@@ -7,10 +7,9 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  /** Teste cores **/
-  --color-primary: #EF4444;
-  --color-secondary: #FFA4A4;
-  --color-tertiary: #FFD1D1;
+  --color-primary: #0e9da1;
+  --color-secondary: #034a4c;
+  --color-tertiary: #087376;
 }
 
 @media (prefers-color-scheme: dark) {

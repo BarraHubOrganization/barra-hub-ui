@@ -1,6 +1,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
-export interface ItemsSidebar {
+export interface IItemsSidebar {
   name: string;
   link: string;
   icon: IconProp;

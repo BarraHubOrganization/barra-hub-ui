@@ -1,8 +1,16 @@
+//system
 import React, { useEffect, useState } from "react";
+
+//types
+import { RoundedType } from "../@core/types/Rounded";
+
+//consts
+import { RoundedConsts } from "../@core/consts/Rounded";
 
 interface Props {
   id: string;
   name: string;
+  rounded: RoundedType;
   label: string;
   mask: string;
   value: string;
@@ -13,6 +21,7 @@ interface Props {
 
 export default function MaskedInput({
   id,
+  rounded = "sm",
   name,
   label,
   mask,
@@ -73,7 +82,7 @@ export default function MaskedInput({
         onBlur={handleBlur}
         placeholder={isFocused ? placeholder : ''}
         disabled={disabled}
-        className="border border-neutral-200 focus:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3"
+        className={`border border-neutral-200 focus:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3 ${rounded && RoundedConsts[rounded]}`}
       />
       <label
         htmlFor={id}

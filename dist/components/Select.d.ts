@@ -1,14 +1,11 @@
 import React from "react";
 import { RoundedType } from "../@core/types/Rounded";
-interface GenericSelect {
-    key: number | string;
-    value: string;
-}
+import { IKeyValuePair } from "@/@core/interfaces/IKeyValuePair";
 interface Props {
     /** Identificador único para o input */
     id: string;
     /** Lista de opções disponíveis no select */
-    options: GenericSelect[];
+    options: IKeyValuePair[];
     /** Nome do campo select */
     name: string;
     /** Indica se o select está habilitado ou desabilitado */
