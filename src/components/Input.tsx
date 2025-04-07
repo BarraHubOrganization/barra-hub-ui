@@ -83,7 +83,7 @@ export default function Input({
     <div className="relative">
       <input
         className={`peer ${rounded && RoundedConsts[rounded]} border ${
-          errors.length ? "border-red-500" : "border-neutral-200"
+          errors.length ? "border-primary" : "border-neutral-200"
         } focus:border-neutral-400 active:border-neutral-400 focus-visible:border-neutral-400 w-full pt-3 pb-2 text-neutral-500 px-3`}
         disabled={!enable}
         id={id}
@@ -106,11 +106,11 @@ export default function Input({
       >
         {label}
         {required && (
-          <span className="text-red-500 text-sm ml-1">*</span>
+          <span className="text-primary text-sm ml-1">*</span>
         )}
       </label>
       {errors.length > 0 && (
-        <div className="text-red-500 text-sm mt-1">
+        <div className="text-primary text-sm mt-1">
           {errors.map((error, index) => (
             <div key={index}>{error}</div>
           ))}

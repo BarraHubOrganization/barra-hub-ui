@@ -83,7 +83,7 @@ export default function Select({
           <option
             value={option.key}
             key={option.key}
-            className="hover:bg-red-500"
+            className="hover:bg-primary"
           >
             {option.value}
           </option>
