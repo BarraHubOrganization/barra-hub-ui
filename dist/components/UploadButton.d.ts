@@ -4,6 +4,10 @@ interface Props {
     onFileSelect: (file: File | null) => void;
     /** Texto a ser exibido no botão */
     buttonText?: string;
+    /** Tipos de arquivos aceitos (ex: 'image/*,application/pdf') */
+    accept?: string;
+    /** Exibir preview da imagem selecionada */
+    showPreview?: boolean;
 }
-export default function UploadButton({ onFileSelect, buttonText }: Props): React.JSX.Element;
+export default function UploadButton({ onFileSelect, buttonText, accept, showPreview, }: Props): React.JSX.Element;
 export {};

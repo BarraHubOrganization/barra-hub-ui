@@ -56,7 +56,7 @@ export default function Modal({
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-black h-screen w-full bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="relative bg-white rounded-lg shadow-lg flex">
         <Card
           content={

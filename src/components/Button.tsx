@@ -48,7 +48,7 @@ export default function Button({
   shadow,
   fillMode = "solid",
   enable = true,
-  backgroundColor = "#EF4444",
+  backgroundColor = "#0e9da1",
   onClick,
   ...props
 }: Props) {
@@ -83,7 +83,7 @@ export default function Button({
 
         const [r, g, b] = hexToRgb(bgColor);
         const luminance = (r * 0.2126 + g * 0.7152 + b * 0.0722) / 255;
-        return luminance < 0.5 ? "#FFFFFF" : "#000000";
+        return luminance < 0.5 ? "#FFFFFF" : "#333";
       };
 
       setTextColor(getTextColor(clientBackgroundColor));
