@@ -3,8 +3,7 @@ import React, { useState, ChangeEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
-  faChevronRight,
-  faSearch,
+  faChevronRight,  
   faSortAsc,
   faSortDesc,
 } from "@fortawesome/free-solid-svg-icons";
@@ -19,7 +18,8 @@ interface Column {
   width?: number;
   attributes?: React.CSSProperties;
   headerAttributes?: React.CSSProperties;
-  sortable?: boolean;
+  sortable?: boolean;  
+  template?: (row: RowData) => React.ReactNode;
 }
 
 interface RowData {
@@ -210,7 +210,7 @@ export default function Table({
                       className="border-b border-neutral-300 p-3"
                       style={col.attributes}
                     >
-                      {row[col.field]}
+                      {col.template ? col.template(row) : row[col.field]}
                     </td>
                   ))}
                 </tr>

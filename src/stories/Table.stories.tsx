@@ -38,6 +38,17 @@ const columns = [
     width: 120,
     sortable: true,
     filterable: true,
+    template: (row) => (
+      <span
+        className={`${
+          row.disponibilidade === "Em Estoque"
+            ? "text-green-600"
+            : "text-red-600"
+        }`}
+      >
+        {row.disponibilidade}
+      </span>
+    ),
   },
 ];
 

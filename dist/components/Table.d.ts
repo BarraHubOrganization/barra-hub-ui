@@ -6,6 +6,7 @@ interface Column {
     attributes?: React.CSSProperties;
     headerAttributes?: React.CSSProperties;
     sortable?: boolean;
+    template?: (row: RowData) => React.ReactNode;
 }
 interface RowData {
     [key: string]: any;
