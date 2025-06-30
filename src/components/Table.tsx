@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
-  faChevronRight,  
+  faChevronRight,
   faSortAsc,
   faSortDesc,
 } from "@fortawesome/free-solid-svg-icons";
@@ -18,7 +18,7 @@ interface Column {
   width?: number;
   attributes?: React.CSSProperties;
   headerAttributes?: React.CSSProperties;
-  sortable?: boolean;  
+  sortable?: boolean;
   template?: (row: RowData) => React.ReactNode;
 }
 
@@ -131,10 +131,10 @@ export default function Table({
                 enable={true}
                 id="inputSearch"
                 label="Pesquisar"
-              />              
+              />
             </div>
             {textButton && (
-              <div className="mr-3">
+              <div>
                 <Button
                   fillMode="solid"
                   text={textButton}

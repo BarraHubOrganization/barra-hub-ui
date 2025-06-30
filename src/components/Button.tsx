@@ -104,7 +104,7 @@ export default function Button({
         ${shadow && ShadowConsts[shadow]} 
         ${fillModeClass} 
         ${!enable ? "bg-neutral-200 text-neutral-400" : ""} 
-        w-auto h-10 flex justify-center items-center gap-2 p-2`}
+        w-max h-10 flex justify-center items-center gap-2 p-2`}
       onClick={enable ? onClick : undefined}
       style={{
         backgroundColor: backgroundColor,
